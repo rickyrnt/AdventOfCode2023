@@ -23,25 +23,27 @@ def insert(nodeTo, newData):
             existingPaths.append(path)
             
     if len(existingPaths) > 0:
-        #CONSIDER: a new path might be faster and more straight than multiple things, which would produce duplicates
-        #hopefully this will not be an issue
-        #editor's note: it wasn't. just means we're doing *slightly* more processing than we need to. it comes to the same conclusion either way.
         placed = False
+        skipped = False
         for oldPath in existingPaths:
             #if our path is less straight and less heat loss, replace it
             #part 2 addition: only replace if the length is >= 4 (can turn)
             if newData[0] <= oldPath[0] and newData[2] <= oldPath[2]:
-                if newData[2] >= 4 or newData[2] == oldPath[2]:
-                    nodes[nodeTo][nodes[nodeTo].index(oldPath)] = newData
-                    placed = True
-                    break
+                if newData[2] >= 3 or newData[2] == oldPath[2]:
+                    if not placed:
+                        nodes[nodeTo][nodes[nodeTo].index(oldPath)] = newData
+                        placed = True
+                        #break
+                    else:
+                        del nodes[nodeTo][nodes[nodeTo].index(oldPath)]
+                        del heap[heap.index([oldPath, nodeTo, len(nodes[nodeTo])])]
             #otherwise, if it is MORE straight and MORE heat loss, forgeddaboudit
-            if newData[0] >= oldPath[0] and newData[2] >= oldPath[2]:
+            elif newData[0] >= oldPath[0] and newData[2] >= oldPath[2]:
                 if newData[2] > 4 or newData[2] == oldPath[2]:
-                    placed = True
+                    skipped = True
                     break
             #otherwise, tack it on as an alternate option
-        if not placed:
+        if not (placed or skipped):
             #heap.append([calcCost(nodeTo) + newData[0], newData, nodeTo, len(nodes[nodeTo])])
             heap.append([newData, nodeTo, len(nodes[nodeTo])])
             nodes[nodeTo].append(newData)
@@ -141,10 +143,9 @@ while True:
     del heap[heap.index(newMin)]
     
     for path in nodes[index - 1]:
-        if path[2] >= 4:
-            debugMap(path)
-            print(path[0:3])
-            exit()
+        debugMap(path)
+        print(path[0:3])
+        exit()
 
 
 
