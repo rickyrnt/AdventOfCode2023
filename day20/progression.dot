@@ -1,0 +1,126 @@
+//how do we solve massive problems? with visualizations, of course!
+
+/*surprise! the rx node relies solely on four inverters, which in turn
+*rely on a group of (complex) binary counters! how cool is that?
+*so it's gonna just be a manner of calculating lcds of looptimes again
+*which is a problem for me in the morning
+*/
+digraph G {
+    node[color=blue]mq
+    node[color=blue]jr
+    node[color=blue]qh
+    node[color=blue]hr
+    node[color=blue]px
+    node[color=blue]fx
+    node[color=blue]tz
+    node[color=blue]mv
+    node[color=blue]cb
+    node[color=blue]sn
+    node[color=blue]xp
+    node[color=blue]nl
+    node[color=blue]dp
+    node[color=blue]zq
+    node[color=blue]hv
+    node[color=blue]zm
+    node[color=red]ct
+    node[color=red]xd
+    node[color=red]kp
+    node[color=red]gt
+    node[color=blue]ss
+    node[color=red]zt
+    node[color=red]ms
+    node[color=blue]xj
+    node[color=blue]ts
+    node[color=blue]lt
+    node[color=blue]gp
+    node[color=blue]br
+    node[color=blue]sj
+    node[color=black]broadcaster
+    node[color=blue]jl
+    node[color=blue]mf
+    node[color=blue]vl
+    node[color=red]ks
+    node[color=red]bb
+    node[color=blue]bv
+    node[color=blue]bs
+    node[color=blue]vt
+    node[color=blue]nn
+    node[color=blue]nz
+    node[color=blue]xh
+    node[color=blue]xl
+    node[color=blue]fr
+    node[color=blue]pd
+    node[color=blue]pm
+    node[color=blue]vg
+    node[color=blue]bj
+    node[color=blue]fh
+    node[color=blue]qb
+    node[color=blue]kx
+    node[color=blue]bx
+    node[color=blue]vr
+    node[color=blue]hg
+    node[color=blue]kt
+    node[color=blue]hz
+    node[color=blue]jf
+    node[color=blue]bg
+    node[color=red]xc
+    node[color=green]rx
+    mq -> zt
+    jr -> gt, hv
+    qh -> gt, kt
+    hr -> hg, zt
+    px -> nl
+    fx -> mv
+    tz -> jl, zt
+    mv -> xd, ss
+    cb -> sj, zt
+    sn -> kx
+    xp -> vl, zt
+    nl -> hz
+    dp -> bj, xd
+    zq -> xd, fx
+    hv -> gt
+    zm -> ms, vr
+    ct -> bb
+    xd -> kp, bg, ss, sn, mf, qb, fx
+    kp -> bb
+    gt -> pm, xh, gp, nn, bv, ct
+    ss -> bg
+    zt -> jl, xc, jf, fh
+    ms -> br, nl, px, vg, vr, ks, fr
+    xj -> ms, vt
+    ts -> ms
+    lt -> gt, xh
+    gp -> bx
+    br -> px
+    sj -> mq, zt
+    broadcaster -> fr, jf, mf, bv
+    jl -> cb
+    mf -> xd, qb
+    vl -> zt, tz
+    ks -> bb
+    bb -> rx
+    bv -> gt, nn
+    bs -> xj, ms
+    vt -> ms, ts
+    nn -> nz
+    nz -> pm, gt
+    xh -> qh
+    xl -> xd, sn
+    fr -> ms, zm
+    pd -> hr, zt
+    pm -> lt
+    vg -> bs
+    bj -> xd
+    fh -> xp
+    qb -> zq
+    kx -> dp, xd
+    bx -> jr, gt
+    vr -> br
+    hg -> fh, zt
+    kt -> gp, gt
+    hz -> ms, vg
+    jf -> zt, pd
+    bg -> xl
+    xc -> bb
+}
